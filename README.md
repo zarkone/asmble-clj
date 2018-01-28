@@ -1,5 +1,13 @@
-```
-$ lein repl
-```
+# Usage
 
-See example usage at [https://github.com/zarkone/asmble-clj/blob/master/src/asmble_clj/core.clj#L56](core.clj)
+```clojure
+(use 'amsble-clj.core)
+
+(let [wast-text "(module
+             (func (export \"doAdd20\") (param $i i32) (result i32)
+               (i32.add (get_local 0) (i32.const 20))))"]
+  (-> wast-text
+    (wast->module)
+    (.doAdd20 22)))
+
+```
